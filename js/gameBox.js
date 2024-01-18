@@ -1,30 +1,15 @@
-// window.addEventListener('load', function(){
-//     const canvas = document.getElementById('game-container');
-//     const ctx = canvas.getContext('2d');
-//     canvas.width = 1050;
-//     canvas.height = 600;
-// });
 
-// let posX = 50
-// let posY = 50
-// let width = 10500
-// let height = 10500
-
-// let character = playableCharacter('../assets/Idle.png');
 let border = new Image();
 border.src = './assets/border.jpg';
 
 let character = new Image();
 character.src = './assets/marineShooter.png';
-character.onload = function () {
-  gameLoop();
-};
+// character.onload = function () {
+//   gameLoop();
+// };
 
 let zombie = new Image();
 zombie.src = './assets/zombieB.png';
-zombie.onload = function () {
-  gameLoop();
-};
 
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
@@ -45,12 +30,10 @@ let score = 0;
 let lives = 9;
 
 
-
-// let characterY = 
-
 const FRAME_LIMIT = 12;
 
 function gameLoop() {
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(border, 0, 0, 5, 600, 220, 0, 5, 600)
 
@@ -72,16 +55,6 @@ function gameLoop() {
     hasMoved = true;
   }
 
-  // if (keyPresses.space) {
-  //   if (positionY >= zombieY && positionY <= zombieY + 50) {
-  //     console.log('SHOOT');
-  //     zombieX = 1400
-  //     zombieY = Math.random() * 500;
-  //     zombieSpeed + 1
-  //     // Check character Y position and compare to zombie Y position and event click 
-  //   }
-  // }
-
   if (hasMoved) {
     frameCount++;
     if (frameCount >= FRAME_LIMIT) {
@@ -99,16 +72,11 @@ function gameLoop() {
   else {
     zombieX = 1400
     zombieY = Math.random() * 500;
-    lives = lives - 1; 
+    lives = lives - 1;
   }
-
-
-
-  drawFrame(//cycleLoop[currentLoopIndex],
-    0, 0, positionX, positionY);
+  drawFrame(0, 0, positionX, positionY);
   window.requestAnimationFrame(gameLoop);
 
-  // ctx.drawImage(character, 0, 0, 57, 80)
   ctx.drawImage(zombie, zombieX, zombieY, 40, 80)
 
   if (keyPresses.space) {
@@ -119,7 +87,6 @@ function gameLoop() {
       zombieSpeed = zombieSpeed + 1
       score = score + 20
       MOVEMENT_SPEED = MOVEMENT_SPEED + .5
-      // Check character Y position and compare to zombie Y position and event click 
     }
   }
   
@@ -131,8 +98,6 @@ function gameLoop() {
 function drawFrame(frameX, frameY, canvasX, canvasY) {
   console.log(width, height)
   ctx.drawImage(character, canvasX, canvasY, width, height)
-  // (character,frameX * width, frameY, width, height,canvasX, canvasY, width, height);
-
 }
 
 const cycleLoop = [0, 1, 2];
@@ -160,7 +125,6 @@ let keyPresses = {};
 
 window.addEventListener('keydown', keyDownListener, false);
 function keyDownListener(event) {
-  // keyPresses[event.key] = true;
   if (event.key == ' ') {
     keyPresses['space'] = true;
   } else {
@@ -170,7 +134,6 @@ function keyDownListener(event) {
 
 window.addEventListener('keyup', keyUpListener, false);
 function keyUpListener(event) {
-  // keyPresses[event.key] = false;
   if (event.key == ' ') {
     keyPresses['space'] = false;
   } else {
