@@ -1,12 +1,8 @@
-
 let border = new Image();
 border.src = './assets/border.jpg';
 
 let character = new Image();
 character.src = './assets/marineShooter.png';
-// character.onload = function () {
-//   gameLoop();
-// };
 
 let zombie = new Image();
 zombie.src = './assets/zombieB.png';
@@ -24,18 +20,41 @@ let positionY = 0;
 
 let zombieX = 1400;
 let zombieY = 300;
-let zombieSpeed = .5;
+let zombieSpeed = 0.5;
 
 let score = 0;
 let lives = 9;
 
-
 const FRAME_LIMIT = 12;
 
+let gameStarted = false;
+
+function startGame() {
+  if (!gameStarted) {
+    gameStarted = true;
+    gameLoop();
+  }
+}
+
+function restartGame() {
+  if (gameStarted) {
+    gameStarted = false;
+    MOVEMENT_SPEED = 2;
+    positionX = 0;
+    positionY = 0;
+
+    zombieX = 1400;
+    zombieY = 300;
+    zombieSpeed = 0.5;
+
+    score = 0;
+    lives = 9;
+  }
+}
+
 function gameLoop() {
-  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(border, 0, 0, 5, 600, 220, 0, 5, 600)
+  ctx.drawImage(border, 0, 0, 5, 600, 220, 0, 5, 600);
 
   let hasMoved = false;
 
@@ -67,37 +86,37 @@ function gameLoop() {
   }
 
   if (zombieX > 220) {
-    zombieX = zombieX - zombieSpeed
-  }
-  else {
-    zombieX = 1400
+    zombieX = zombieX - zombieSpeed;
+  } else {
+    zombieX = 1400;
     zombieY = Math.random() * 500;
     lives = lives - 1;
   }
   drawFrame(0, 0, positionX, positionY);
-  window.requestAnimationFrame(gameLoop);
+  if (gameStarted) {
+    window.requestAnimationFrame(gameLoop);
+  }
 
-  ctx.drawImage(zombie, zombieX, zombieY, 40, 80)
+  ctx.drawImage(zombie, zombieX, zombieY, 40, 80);
 
   if (keyPresses.space) {
     if (positionY >= zombieY && positionY <= zombieY + 50) {
       console.log('SHOOT');
-      zombieX = 1400
+      zombieX = 1400;
       zombieY = Math.random() * 500;
-      zombieSpeed = zombieSpeed + 1
-      score = score + 20
-      MOVEMENT_SPEED = MOVEMENT_SPEED + .5
+      zombieSpeed = zombieSpeed + 1;
+      score = score + 20;
+      MOVEMENT_SPEED = MOVEMENT_SPEED + 0.5;
     }
   }
-  
-  document.getElementById("score").value = score
-  document.getElementById("lives").value = lives
+
+  document.getElementById('score').value = score;
+  document.getElementById('lives').value = lives;
 }
 
-
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-  console.log(width, height)
-  ctx.drawImage(character, canvasX, canvasY, width, height)
+  console.log(width, height);
+  ctx.drawImage(character, canvasX, canvasY, width, height);
 }
 
 const cycleLoop = [0, 1, 2];
@@ -113,13 +132,12 @@ function moveCharacter(deltaX, deltaY) {
   }
 }
 
-
 function gameContainer() {
   canvas.width = 1450;
   canvas.height = 600;
 }
 
-gameContainer()
+gameContainer();
 
 let keyPresses = {};
 
