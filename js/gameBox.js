@@ -12,16 +12,16 @@
 
 // let character = playableCharacter('../assets/Idle.png');
 let border = new Image();
-border.src = '../assets/border.jpg';
+border.src = './assets/border.jpg';
 
 let character = new Image();
-character.src = '../assets/marineShooter.png';
+character.src = './assets/marineShooter.png';
 character.onload = function () {
   gameLoop();
 };
 
 let zombie = new Image();
-zombie.src = '../assets/zombieB.png';
+zombie.src = './assets/zombieB.png';
 zombie.onload = function () {
   gameLoop();
 };
@@ -39,7 +39,6 @@ let positionY = 0;
 
 let zombieX = 1400;
 let zombieY = 300;
-
 let zombieSpeed = .5;
 
 let score = 0;
@@ -100,6 +99,7 @@ function gameLoop() {
   else {
     zombieX = 1400
     zombieY = Math.random() * 500;
+    lives = lives - 1; 
   }
 
 
@@ -116,14 +116,11 @@ function gameLoop() {
       console.log('SHOOT');
       zombieX = 1400
       zombieY = Math.random() * 500;
-      zombieSpeed +++ .15
-      score = score +++ 20
-      MOVEMENT_SPEED +++ .0005
+      zombieSpeed = zombieSpeed + 1
+      score = score + 20
+      MOVEMENT_SPEED = MOVEMENT_SPEED + .5
       // Check character Y position and compare to zombie Y position and event click 
     }
-  if (zombieX <= 220) {
-    lives = lives --- 1; 
-  }
   }
   
   document.getElementById("score").value = score
