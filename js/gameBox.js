@@ -33,16 +33,17 @@ const width = 57;
 const height = 80;
 const scale = 1;
 
-let MOVEMENT_SPEED = 4;
+let MOVEMENT_SPEED = 2;
 let positionX = 0;
 let positionY = 0;
 
 let zombieX = 1400;
 let zombieY = 300;
 
-let zombieSpeed = 1;
+let zombieSpeed = .5;
 
 let score = 0;
+let lives = 9;
 
 
 
@@ -115,14 +116,18 @@ function gameLoop() {
       console.log('SHOOT');
       zombieX = 1400
       zombieY = Math.random() * 500;
-      zombieSpeed++ + .25
-      score = score++ + 20
+      zombieSpeed +++ .15
+      score = score +++ 20
+      MOVEMENT_SPEED +++ .0005
       // Check character Y position and compare to zombie Y position and event click 
     }
-
+  if (zombieX <= 220) {
+    lives = lives --- 1; 
   }
-
+  }
+  
   document.getElementById("score").value = score
+  document.getElementById("lives").value = lives
 }
 
 
