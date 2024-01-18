@@ -33,12 +33,18 @@ const width = 57;
 const height = 80;
 const scale = 1;
 
-const MOVEMENT_SPEED = 3;
+let MOVEMENT_SPEED = 4;
 let positionX = 0;
 let positionY = 0;
 
-let zombieX = 1400
-let zombieY = 300
+let zombieX = 1400;
+let zombieY = 300;
+
+let zombieSpeed = 1;
+
+let score = 0;
+
+
 
 // let characterY = 
 
@@ -66,10 +72,15 @@ function gameLoop() {
     hasMoved = true;
   }
 
-  if (keyPresses.space && height == zombieY <= 100) {
-    console.log('SHOOT');
-    // Check character Y position and compare to zombie Y position and event click 
-  }
+  // if (keyPresses.space) {
+  //   if (positionY >= zombieY && positionY <= zombieY + 50) {
+  //     console.log('SHOOT');
+  //     zombieX = 1400
+  //     zombieY = Math.random() * 500;
+  //     zombieSpeed + 1
+  //     // Check character Y position and compare to zombie Y position and event click 
+  //   }
+  // }
 
   if (hasMoved) {
     frameCount++;
@@ -82,10 +93,10 @@ function gameLoop() {
     }
   }
 
-  if (zombieX > 220){
-    zombieX = zombieX - 3 
+  if (zombieX > 220) {
+    zombieX = zombieX - zombieSpeed
   }
-  else{
+  else {
     zombieX = 1400
     zombieY = Math.random() * 500;
   }
@@ -93,11 +104,25 @@ function gameLoop() {
 
 
   drawFrame(//cycleLoop[currentLoopIndex],
-0, 0, positionX, positionY);
+    0, 0, positionX, positionY);
   window.requestAnimationFrame(gameLoop);
 
   // ctx.drawImage(character, 0, 0, 57, 80)
   ctx.drawImage(zombie, zombieX, zombieY, 40, 80)
+
+  if (keyPresses.space) {
+    if (positionY >= zombieY && positionY <= zombieY + 50) {
+      console.log('SHOOT');
+      zombieX = 1400
+      zombieY = Math.random() * 500;
+      zombieSpeed++ + .25
+      score = score++ + 20
+      // Check character Y position and compare to zombie Y position and event click 
+    }
+
+  }
+
+  document.getElementById("score").value = score
 }
 
 
@@ -111,22 +136,6 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
 const cycleLoop = [0, 1, 2];
 let currentLoopIndex = 0;
 let frameCount = 0;
-
-// function step(){
-//     frameCount++;
-//     if (frameCount < 15) {
-//         window.requestAnimationFrame(step);
-//         return;
-//     }
-//     frameCount = 0;
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0,);
-//     currentLoopIndex++;
-//     if (currentLoopIndex >= cycleLoop.length) {
-//         currentLoopIndex = 0;
-//     }
-//     window.requestAnimationFrame(step);
-// }
 
 function moveCharacter(deltaX, deltaY) {
   if (positionX + deltaX > 0 && positionX + deltaX < 150) {
@@ -150,7 +159,7 @@ let keyPresses = {};
 window.addEventListener('keydown', keyDownListener, false);
 function keyDownListener(event) {
   // keyPresses[event.key] = true;
-  if (event.key == ' '){
+  if (event.key == ' ') {
     keyPresses['space'] = true;
   } else {
     keyPresses[event.key] = true;
@@ -166,29 +175,3 @@ function keyUpListener(event) {
     keyPresses[event.key] = false;
   }
 }
-
-// / old
-// keyPress[event.key] = true;
-
-// // new
-// if (event.key == ' ') {
-//     keyPress['space'] = true;
-// } else {
-//     keyPress[event.key] = true;
-// }
-
-
-// // old 
-// keyPress[event.key] = false;
-
-// // new
-// if (event.key == ' ') {
-//     keyPress['space'] = false;
-// } else {
-//     keyPress[event.key] = false;
-// }
-
-// // in game loop
-// if (keyPress.space) {
-//     console.log("SHOOT!")
-// }
