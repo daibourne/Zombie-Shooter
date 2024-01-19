@@ -9,11 +9,16 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="popup"></div>
         <div>
-            <button name="start_button" type="button" id="start" onclick="gameLoop()">Start Game</button>
+            <button name="start_button" type="button" id="start" onclick="startGame()">Start Game</button>
+        </div>
+        <div>
+            <button name="restart_button" type="button" id="restart" onclick="restartGame()">Restart Game</button>
         </div>
         <section id="game-header">
-        <h1>Zombie Shooter Goal: Stay Alive</h1>
+        <h1>Zombie Defense Shooter</h1>
+        <h2>Don't allow the Zombies to make it pass your barrier. Line yourself up with zombie using the W,A,S,D keys and shoot 'em died with SPACEBAR</h2>
         </section>
         <form id="myForm">
             <br>Your Score:<br>

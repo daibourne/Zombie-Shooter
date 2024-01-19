@@ -24,7 +24,7 @@ let positionY = 0;
 
 let zombieX = 1400;
 let zombieY = 300;
-let zombieSpeed = .5;
+let zombieSpeed = 0.5;
 
 let score = 0;
 let lives = 9;
@@ -32,10 +32,49 @@ let lives = 9;
 
 const FRAME_LIMIT = 12;
 
+let gameStarted = false;
+
+function startGame() {
+  if (!gameStarted) {
+    gameStarted = true;
+    gameLoop();
+  }
+}
+
+function restartGame() {
+  if (gameStarted) {
+    gameStarted = false;
+    MOVEMENT_SPEED = 2;
+    positionX = 0;
+    positionY = 0;
+
+    zombieX = 1400;
+    zombieY = 300;
+    zombieSpeed = 0.5;
+
+    score = 0;
+    lives = 9;
+  }
+}
+
 function gameLoop() {
-  
+
+  if (lives <= 0) {
+    const popUp = document.querySelector('#popup')
+    let p = document.createElement('p');
+    let message = ''
+    if (score < 700) {
+      message = "You Died!"
+    }
+    else {
+      message = "You Survived!"
+    }
+    popUp.append(message, p)
+    return
+  }
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(border, 0, 0, 5, 600, 220, 0, 5, 600)
+  ctx.drawImage(border, 0, 0, 5, 600, 220, 0, 5, 600);
 
   let hasMoved = false;
 
@@ -68,36 +107,38 @@ function gameLoop() {
 
   if (zombieX > 220) {
     zombieX = zombieX - zombieSpeed
-  }
-  else {
+  } else {
     zombieX = 1400
     zombieY = Math.random() * 500;
     lives = lives - 1;
   }
   drawFrame(0, 0, positionX, positionY);
-  window.requestAnimationFrame(gameLoop);
 
-  ctx.drawImage(zombie, zombieX, zombieY, 40, 80)
+  if (gameStarted) {
+    window.requestAnimationFrame(gameLoop);
+  }
+
+  ctx.drawImage(zombie, zombieX, zombieY, 40, 80);
 
   if (keyPresses.space) {
     if (positionY >= zombieY && positionY <= zombieY + 50) {
       console.log('SHOOT');
-      zombieX = 1400
+      zombieX = 1400;
       zombieY = Math.random() * 500;
-      zombieSpeed = zombieSpeed + 1
-      score = score + 20
-      MOVEMENT_SPEED = MOVEMENT_SPEED + .5
+      zombieSpeed = zombieSpeed + 1;
+      score = score + 20;
+      MOVEMENT_SPEED = MOVEMENT_SPEED + 0.5;
     }
   }
-  
-  document.getElementById("score").value = score
-  document.getElementById("lives").value = lives
+
+  document.getElementById("score").value = score;
+  document.getElementById("lives").value = lives;
 }
 
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-  console.log(width, height)
-  ctx.drawImage(character, canvasX, canvasY, width, height)
+  console.log(width, height);
+  ctx.drawImage(character, canvasX, canvasY, width, height);
 }
 
 const cycleLoop = [0, 1, 2];
@@ -119,7 +160,7 @@ function gameContainer() {
   canvas.height = 600;
 }
 
-gameContainer()
+gameContainer();
 
 let keyPresses = {};
 
