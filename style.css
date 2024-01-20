@@ -31,6 +31,7 @@
     height: 50px;
     line-height: 50px;
     padding: 0 5px;
+    font-family: 'Manrope', sans-serif;
 }
 
 #restart {
@@ -47,6 +48,7 @@
     height: 50px;
     line-height: 50px;
     padding: 0 5px;
+    font-family: 'Manrope', sans-serif;
 }
 
 #score {
@@ -64,11 +66,17 @@
 h1 {
     color: #a00404;
     text-align: center;
+    font-family: 'Manrope', sans-serif;
+    position: relative;
+    bottom: 25px;
 }
 
 h2 {
     color: #e4a33f;
     text-align: center;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    bottom: 25px;
 }
 
 #boxes {
@@ -76,8 +84,13 @@ h2 {
     position: relative;
     left: 775px;
     color: #a00404;
+    
 }
 
 #popup {
     color: #d5cb75;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    font-family: 'Oswald', sans-serif;
 }
