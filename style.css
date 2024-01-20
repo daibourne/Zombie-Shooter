@@ -2,16 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #616161;
-}
-h1 {
-    color: crimson;
+    background-color: #17141b;
 }
 
 #game-container {
     border: 5px solid black;
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 350px;
     left: 50%;
     transform: translate(-50%, -50%);
     background: url('./assets/grassPlane.jpg');
@@ -21,25 +18,66 @@ h1 {
 }
 
 #start {
-
+    position: relative;
+    left: 750px;
+    top: 20px;
+    margin: 10px;
+    color: #de3e35;
+    cursor: pointer;
+    border: 1px solid #eeeeee;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-color: #3b303d;
+    border-radius: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 5px;
 }
 
 #restart {
-
+    position: relative;
+    left: 1050px;
+    bottom: 50px;
+    margin: 10px;
+    color: #de3e35;
+    cursor: pointer;
+    border: 1px solid #eeeeee;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-color: #3b303d;
+    border-radius: 25px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 5px;
 }
 
 #score {
-
+    position: relative;
+    color: #de3e35;
+    background-color: #3b303d;
 }
 
 #lives {
-
+    position: relative;
+    color: #de3e35;
+    background-color: #3b303d;
 }
 
-.h1 {
-    
+h1 {
+    color: #a00404;
+    text-align: center;
 }
 
-.h2 {
-    
+h2 {
+    color: #e4a33f;
+    text-align: center;
+}
+
+#boxes {
+    display: flex;
+    position: relative;
+    left: 775px;
+    color: #a00404;
+}
+
+#popup {
+    color: #d5cb75;
 }

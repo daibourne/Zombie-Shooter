@@ -18,8 +18,9 @@
         </div>
         <section id="game-header">
         <h1>Zombie Defense Shooter</h1>
-        <h2>Don't allow the Zombies to make it pass your barrier. Line yourself up with zombie using the W,A,S,D keys and shoot 'em died with SPACEBAR</h2>
+        <h2>Prevent the zombies from crossing your barrier. Align yourself with the zombies using the W, A, S, D keys and eliminate them with the SPACEBAR</h2>
         </section>
+        <section id =boxes>
         <form id="myForm">
             <br>Your Score:<br>
             <input name="player_score" type="number" value="0" id="score" readonly>
@@ -28,6 +29,7 @@
             <br>Lives:<br>
             <input name="player_lives" type="number" value="0" id="lives" readonly>
         </form>
+        </section>
         <canvas id="game-container"></canvas>
         <script src="./js/playableCharacter.js" async defer></script>
         <script src="./js/gameBox.js" async defer></script>
