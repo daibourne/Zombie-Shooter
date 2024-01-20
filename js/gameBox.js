@@ -50,7 +50,7 @@ function restartGame() {
 
     zombieX = 1400;
     zombieY = 300;
-    zombieSpeed = 0.5;
+    zombieSpeed = 0.6;
 
     score = 0;
     lives = 9;
