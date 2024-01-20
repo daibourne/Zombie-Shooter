@@ -24,7 +24,7 @@ let positionY = 0;
 
 let zombieX = 1400;
 let zombieY = 300;
-let zombieSpeed = 5;
+let zombieSpeed = 0.5;
 
 let score = 0;
 let lives = 9;
