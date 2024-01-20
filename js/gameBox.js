@@ -27,7 +27,7 @@ let zombieY = 300;
 let zombieSpeed = 5;
 
 let score = 0;
-let lives = 1;
+let lives = 9;
 
 
 const FRAME_LIMIT = 12;
