@@ -20,6 +20,25 @@ Click on 'Restart Game' before selecting 'Start Game' to initiate the game again
 # Inspiration
 I drew inspiration for this game from the browser games of my childhood, where zombies would pursue you on the screen, and you had to shoot them while avoiding their attacks. Anticipating the challenge, I decided to adopt the Plants vs Zombies style, with enemies moving across the screen.
 
+# CHANGE LOG 
+- Updated README
+- Added SCSS
+- Update Read Me
+- zomnbieSpeed fix 3
+- zombieSpeed fix 2
+- zombieSpeed fix
+- lives fix 2
+- Styling update 2
+- Styling update #1
+- Finish Game, need styling
+- bug fix 2
+- bug fix 1
+- 3rd update
+- update 2
+- first push
+- inital commit
+- Initial commit
+
 # ADDITIONAL PATCHES
 Sound can be added using javascript with URL extensions. 
 
